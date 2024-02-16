@@ -1,0 +1,48 @@
+{
+  "name": "chevrotain-playground",
+  "description": "chevrotain-playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf coverage && rm -rf yarn-error.log",
+    "compile": "tsc",
+    "compile:clean": "yarn clean && yarn compile",
+    "compile:watch": "tsc --watch",
+    "generate-diagram": "node scripts/generateDiagram.js",
+    "build": "rm -rf dist && tsc && yarn generate-diagram",
+    "test": "ts-node -O '{\"module\":\"commonjs\"}' node_modules/jest/bin/jest.js ",
+    "test:watch": "ts-node -O '{\"module\":\"commonjs\"}' node_modules/jest/bin/jest.js --watch"
+  },
+  "dependencies": {
+    "chevrotain": "10.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.12",
+    "@types/node": "20.11.19",
+    "jest": "29.7.0",
+    "ts-jest": "29.1.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  },
+  "jest": {
+    "collectCoverage": false,
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "roots": [
+      "src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "**/*.spec.ts"
+    ],
+    "testTimeout": 120000
+  }
+}
